@@ -54,7 +54,7 @@
 
 <input
   id="input"
-  placeholder="例: 3.6.3-5 / 3.-6.3-5"
+  placeholder="例: 3.6.3.5 / 3.-6.3.5"
   autocomplete="off"
 >
 
@@ -101,7 +101,7 @@ function convert(input) {
 
   const parts = input.split(".");
 
-  if (parts.length < 3) {
+  if (parts.length < 4) {
 
     return null;
 
@@ -109,7 +109,8 @@ function convert(input) {
 
   const jo = parts[0];
   const chome = parts[1];
-  const banchi = parts.slice(2).join(".");
+  const ban = parts[2];
+  const gou = parts[3];
 
   const joText =
     parseDirection(jo, "北", "南") + "条";
@@ -117,7 +118,7 @@ function convert(input) {
   const chomeText =
     parseDirection(chome, "西", "東") + "丁目";
 
-  return joText + chomeText + banchi;
+  return joText + chomeText + ban + "-" + gou;
 
 }
 
@@ -134,7 +135,7 @@ function search() {
 
   if (!address) {
 
-    alert("入力例: 3.6.3-5");
+    alert("入力例: 3.6.3.5");
     return;
 
   }
